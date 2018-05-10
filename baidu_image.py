@@ -4,6 +4,7 @@ import sys
 import requests
 from tkinter import *
 
+# urlcode映射解码
 """解码百度图片搜索json中传递的url
 抓包可以获取加载更多图片时，服务器向网址传输的json。
 其中originURL是特殊的字符串
@@ -70,7 +71,7 @@ def decode_info(url):
         url = url.replace(key, value)
     # 再替换剩下的字符
     return url.translate(char_table)
-
+# 使用加载更多的接口
 def getManyPages(keyword, pages):
     params=[]
     for i in range(30, 30*int(pages)+30, 30):
@@ -136,16 +137,14 @@ def main():
         for info in url:
             url_info = info.get('objURL')
             if url_info != None:
-                getImg(dirpath, count) # 参数2:指定保存的路径
+                getImg(dirpath, count) # 参数1:指定保存的路径
                 count += 1
             else:
                 print('图片链接不存在')
     root.destroy()
 
 
-#声名一个tk（你可以把tk理解为一个窗口）
 root = Tk()
-#这里填写什么，生成窗口的名字就是什么
 root.title("输入获取参数")
 
 L1 = Label(root,text = '关键词:').grid(column = 0,row = 0)
