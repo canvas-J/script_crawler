@@ -160,4 +160,3 @@ E2 = Entry(root,textvariable = var2, bd = 2).grid(column = 1,row = 1)
 
 Button1 = Button(root,text = "开始获取",command=main).grid(column = 1,row = 3)
 root.mainloop()
-
