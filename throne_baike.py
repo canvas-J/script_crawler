@@ -30,14 +30,14 @@ class THRONE:
         self.file = None
 
     def getPage(self, c):
+        headers = {"User-Agent":"Mozilla/5.0(Macintosh;IntelMacOSX10_7_0)AppleWebKit/535.11(KHTML,likeGecko)Chrome/17.0.963.56Safari/535.11",
+            "User-Agent":"Mozilla/4.0(compatible;MSIE7.0;WindowsNT5.1;360SE)",
+            "User-Agent":"Mozilla/4.0(compatible;MSIE7.0;WindowsNT5.1;TheWorld)",
+            "User-Agent":"Mozilla/4.0(compatible;MSIE7.0;WindowsNT5.1;Trident/4.0;SE2.XMetaSr1.0;SE2.XMetaSr1.0;.NETCLR2.0.50727;SE2.XMetaSr1.0)",
+            "User-Agent":"Mozilla/4.0(compatible;MSIE7.0;WindowsNT5.1)",
+            "User-Agent":"Mozilla/4.0(compatible;MSIE7.0;WindowsNT5.1;AvantBrowser)",
+            "User-Agent":"Mozilla/4.0(compatible;MSIE7.0;WindowsNT5.1)"}
         try:
-            headers = {"User-Agent":"Mozilla/5.0(Macintosh;IntelMacOSX10_7_0)AppleWebKit/535.11(KHTML,likeGecko)Chrome/17.0.963.56Safari/535.11",
-                        "User-Agent":"Mozilla/4.0(compatible;MSIE7.0;WindowsNT5.1;360SE)",
-                        "User-Agent":"Mozilla/4.0(compatible;MSIE7.0;WindowsNT5.1;TheWorld)",
-                        "User-Agent":"Mozilla/4.0(compatible;MSIE7.0;WindowsNT5.1;Trident/4.0;SE2.XMetaSr1.0;SE2.XMetaSr1.0;.NETCLR2.0.50727;SE2.XMetaSr1.0)",
-                        "User-Agent":"Mozilla/4.0(compatible;MSIE7.0;WindowsNT5.1)",
-                        "User-Agent":"Mozilla/4.0(compatible;MSIE7.0;WindowsNT5.1;AvantBrowser)",
-                        "User-Agent":"Mozilla/4.0(compatible;MSIE7.0;WindowsNT5.1)"}
             url = self.url + "{}?fr=aladdin".format(c)
             r = requests.get(url = url, headers = headers)
             text = r.content.decode('utf-8')
@@ -81,5 +81,5 @@ class THRONE:
             print("本季内容已保存！共{}条内容".format(j + 1))
             time.sleep(2)
 
-spider = THRONE()
-spider.main()
+script = THRONE()
+script.main()
