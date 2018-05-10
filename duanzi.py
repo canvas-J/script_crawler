@@ -3,8 +3,7 @@ import requests
 import re
 import time
 
-class QSBK:
-
+class DuanZi:
     def __init__(self):
         self.pageIndex = 1        
         self.stories = []
@@ -37,7 +36,6 @@ class QSBK:
         items = re.findall(pattern,pageCode)
         #用来存储每页的段子们
         pageStories = []
-        #遍历正则表达式匹配的信息
         for item in items:
             #如果不含有图片，把它加入list中
             if item[2] != "thumb":
@@ -52,32 +50,24 @@ class QSBK:
         #如果当前未看的页数少于2页，则加载新一页
         if self.enable == True:
             if len(self.stories) < 2:
-                #获取新一页
                 pageStories = self.getPageItems()
                 #将该页的段子存放到全局list中
                 if pageStories:
                     self.stories.append(pageStories)
-                    #获取完之后页码索引加一，表示下次读取下一页
                     self.pageIndex += 1
-    
-    #调用该方法，每次敲回车打印输出一个段子
+
     def getOneStory(self,pageStories,nowpage):
-        #遍历一页的段子
         for one in pageStories:
-            #等待用户输入
             i = input()
             #每当输入回车一次，判断一下是否要加载新页面
             self.loadPage()
-            #如果输入Q则程序结束
             if input == "Q":
                 self.enable = False
                 return
             print("第{}页\t发布人:{}\t赞:{}\t评论：{}\n{}".format(nowpage,one[0],one[2],one[3],one[1]))
-    
-    #开始方法
-    def start(self):
+
+    def main(self):
         print(u"正在读取糗事百科,按回车查看新段子，Q退出")
-        #使变量为True，程序可以正常运行
         self.enable = True
         #先加载一页内容
         self.loadPage()
@@ -94,11 +84,14 @@ class QSBK:
                 #输出该页的段子
                 self.getOneStory(pageStories,nowPage)
  
-spider = QSBK()
-spider.start()
+script = DuanZi()
+script.start()
 
 
 
+
+
+# 未封装前
 '''
 import requests
 import re
