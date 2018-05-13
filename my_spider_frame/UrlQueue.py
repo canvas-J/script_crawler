@@ -19,6 +19,7 @@ class UrlQueue(object):
     def add_new_url(self,url):
         if url is None:
             return
+        # 首先url列表不能重复，其次爬取过的过滤掉
         if url not in self.new_urls and url not in self.old_urls:
             self.new_urls.add(url)
 
