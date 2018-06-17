@@ -41,9 +41,10 @@ def scrawl_ip(url, num, url_for_test='https://www.baidu.com'):
     return ip_list
 
 if __name__ == "__main__":
+    print("正在获取并测试代理...(约需20s)")
     scrawl_ip(proxy_ip, num)
-    time_now = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
+    time_now = datetime.datetime.now().strftime('%Y-%m-%d')
     with open("{}.txt".format(time_now),"wt") as out_file:
         for i in range(len(ip_list)):
             out_file.writelines(ip_list[i])
-    print("代理暂存作名为{}.txt文件".format(time_now))
+    print("代理文件名：{}.txt".format(time_now))
