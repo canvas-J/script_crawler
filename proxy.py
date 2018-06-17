@@ -1,20 +1,10 @@
 # -*- coding: utf-8 -*-
-import re
-import time
-import random
-import datetime
-import requests
-
+import re, time, datetime, requests
+from fake_useragent import UserAgent
 
 proxy_ip = "http://www.xicidaili.com/nt/"
 num = 1         # 爬取代理页数
-
-useragent_list = [
-    "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1",
-    "Mozilla/5.0 (X11; CrOS i686 2268.111.0) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.57 Safari/536.11",
-    "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.6 (KHTML, like Gecko) Chrome/20.0.1092.0 Safari/536.6"
-    ]
-headers = {'User-Agent': random.choice(useragent_list),
+headers = {'User-Agent': UserAgent().random,
    'Accept': "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
    'Accept-Encoding': 'gzip'
     }
